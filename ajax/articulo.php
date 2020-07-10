@@ -14,13 +14,13 @@
 
     switch ($_GET['op']) {
         case 'guardaryeditar':
-            if (!file_exists($_FILES['images']['tmp_name']) || !is_uploaded_file($_FILES['images']['tmp_name'])) {
-                $imagen = "";
+            if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
+                $imagen = $_POST['imagenactual'];
             } else {
-                $ext = explode(".", $_FILES['image']['name']);
-                if ($_FILES['image']['type'] == "image/jpg" || $_FILES['image']['type'] == "image/jpeg" || $_FILES['image']['type'] == "image/png") {
+                $ext = explode(".", $_FILES['imagen']['name']);
+                if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png") {
                     $imagen = round(microtime(true)).".".end($ext);
-                    move_uploaded_file($_FILES['images']['tmp_name'], "../files/articulos/{$imagen}");
+                    move_uploaded_file($_FILES['imagen']['tmp_name'], "../files/articulos/{$imagen}");
                 }
             }
 
@@ -70,6 +70,16 @@
             );
 
             echo json_encode($res);
+            break;
+        case 'selectCategoria':
+            require_once("../modelos/Categoria.php");
+            $categoria = new Categoria();
+            $res = $categoria->select();
+
+            while($reg = $res->fetch_object()) {
+                echo "<option value='$reg->idcategoria'>{$reg->nombre}</option>";
+            }
+            
             break;
     }
 
