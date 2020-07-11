@@ -10,14 +10,16 @@ function init() {
 }
 
 function limpiar() {
-    $("#idcategoria").val("");
     $("#nombre").val("");
-    $("#descripcion").val("");
+    $("#num_documento").val("");
+    $("#telefono").val("");
+    $("#email").val("");
+    $("#idpersona").val("");
 }
 
 function mostrarFormulario(flag) {
     limpiar();
-
+     
     if (flag) {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
@@ -47,7 +49,7 @@ function listar() {
             'pdf'
         ],
         "ajax": {
-            url: '../ajax/categoria.php?op=listar',
+            url: '../ajax/persona.php?op=listarp',
             type: "get",
             dateType: "json",
             error: function (e) {
@@ -66,7 +68,7 @@ function guardaryeditar(e) {
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../ajax/categoria.php?op=guardaryeditar",
+		url: "../ajax/persona.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -81,30 +83,25 @@ function guardaryeditar(e) {
 }
 
 function mostrar(id) {
-    $.post("../ajax/categoria.php?op=mostrar", {idcategoria: id}, function (data, status) {
+    $.post("../ajax/persona.php?op=mostrar", {idpersona: id}, function (data, status) {
         data = JSON.parse(data);
         mostrarFormulario(true);
+        
         $("#nombre").val(data.nombre);
-        $("#descripcion").val(data.descripcion);
-        $("#idcategoria").val(data.idcategoria);
+        $("#tipo_documento").val(data.tipo_documento);
+        $("#tipo_documento").selectpicker('refresh');
+        $("#num_documento").val(data.num_documento);
+        $("#direccion").val(data.direccion);
+        $("#telefono").val(data.telefono);
+        $("#email").val(data.email);
+        $("#idpersona").val(data.idpersona);
     });
 }
 
-function desactivar(id) {
-    bootbox.confirm("Esta seguro de desactivar la categoria?", function (result) {
+function eliminar(id) {
+    bootbox.confirm("Esta seguro de eliminar este proveedor?", function (result) {
         if (result) {
-            $.post("../ajax/categoria.php?op=desactivar", {idcategoria: id}, function (e) {
-                bootbox.alert(e);
-                tabla.ajax.reload();
-            });
-        }
-    });
-}
-
-function activar(id) {
-    bootbox.confirm("Esta seguro de activar la categoria?", function (result) {
-        if (result) {
-            $.post("../ajax/categoria.php?op=activar", {idcategoria: id}, function (e) {
+            $.post("../ajax/persona.php?op=eliminar", {idpersona: id}, function (e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
