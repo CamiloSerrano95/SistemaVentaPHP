@@ -1,4 +1,12 @@
-<?php require "header.php"; ?>
+<?php
+  session_start();
+  ob_start();
+  if (!isset($_SESSION['nombre'])) {
+    header('Location: login.html');
+  } else {
+    require "header.php";
+    if ($_SESSION['almacen'] == 1) {
+?>
 <!--Contenido-->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -80,7 +88,8 @@
 </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
 
-<?php require "footer.php"; ?>
+<?php } else{ require "noacceso.php"; } require "footer.php"; ?>
 <script src="../public/js/JsBarcode.all.min.js"></script>
 <script src="../public/js/jquery.PrintArea.js"></script>
 <script src="scripts/articulo.js"></script>
+<?php } ob_end_flush() ?>
