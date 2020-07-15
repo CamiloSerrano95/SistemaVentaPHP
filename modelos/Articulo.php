@@ -34,5 +34,17 @@
             $sql = "SELECT A.idarticulo, A.idcategoria, C.nombre AS categoria, A.codigo, A.nombre, A.stock, A.descripcion, A.imagen, A.condicion FROM articulo A INNER JOIN categoria C ON A.idcategoria = C.idcategoria";
             return ejecutarConsulta($sql);
         }
-    }
+
+        public function listarActivos() {
+            $sql = "SELECT a.idarticulo,a.idcategoria,c.nombre as categoria,a.codigo,a.nombre,a.stock,
+                a.descripcion,a.imagen,a.condicion FROM articulo a INNER JOIN categoria c 
+                ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
+            return ejecutarConsulta($sql);		
+        }
+
+        public function listarActivosVenta() {
+            $sql = "SELECT a.idarticulo,a.idcategoria,c.nombre as categoria,a.codigo,a.nombre,a.stock,(SELECT precio_venta FROM detalle_ingreso WHERE idarticulo=a.idarticulo order by iddetalle_ingreso desc limit 0,1) as precio_venta,a.descripcion,a.imagen,a.condicion FROM articulo a INNER JOIN categoria c ON a.idcategoria=c.idcategoria WHERE a.condicion='1'";
+            return ejecutarConsulta($sql);		
+	    }
+	}
 ?>
