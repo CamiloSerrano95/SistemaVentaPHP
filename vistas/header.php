@@ -86,120 +86,113 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
-            <?php
-              if ($_SESSION['escritorio'] == 1) {
-                echo '
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-tasks"></i> <span>Escritorio</span>
-                    </a>
-                  </li>   
-                ';
-              }
+            <?php 
+            if ($_SESSION['escritorio']==1)
+            {
+              echo '<li id="mEscritorio">
+              <a href="escritorio.php">
+                <i class="fa fa-tasks"></i> <span>Escritorio</span>
+              </a>
+            </li>';
+            }
             ?>
 
-            <?php
-              if ($_SESSION['almacen'] == 1) {
-                echo '
-                  <li class="treeview">
-                    <a href="#">
-                      <i class="fa fa-laptop"></i>
-                      <span>Almacén</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                      <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
-                    </ul>
-                  </li>
-                ';
-              }
+            <?php 
+            if ($_SESSION['almacen']==1)
+            {
+              echo '<li id="mAlmacen" class="treeview">
+              <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>Almacén</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="lArticulos"><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
+                <li id="lCategorias"><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
+              </ul>
+            </li>';
+            }
             ?>
 
-            <?php
-              if ($_SESSION['compras'] == 1) {
-                echo '
-                <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-th"></i>
-                  <span>Compras</span>
-                   <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                  <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
-                </ul>
-              </li>
-                ';
-              }
+            <?php 
+            if ($_SESSION['compras']==1)
+            {
+              echo '<li id="mCompras" class="treeview">
+              <a href="#">
+                <i class="fa fa-th"></i>
+                <span>Compras</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="lIngresos"><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                <li id="lProveedores"><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+              </ul>
+            </li>';
+            }
             ?>
 
-            <?php
-              if ($_SESSION['ventas'] == 1) {
-                echo '
-                <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-shopping-cart"></i>
-                  <span>Ventas</span>
-                   <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                  <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                </ul>
-              </li>    
-                ';
-              }
+            <?php 
+            if ($_SESSION['ventas']==1)
+            {
+              echo '<li id="mVentas" class="treeview">
+              <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Ventas</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="lVentas"><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                <li id="lClientes"><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
+              </ul>
+            </li>';
+            }
             ?>
-          
-            <?php
-              if ($_SESSION['acceso'] == 1) {
-                echo '
-                <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-folder"></i> <span>Acceso</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                  <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                  
-                </ul>
-              </li>
-                ';
-              }
-            ?>
-            
-            <?php
-              if ($_SESSION['consultac'] == 1) {
-                echo '
-                <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>                
-                </ul>
-              </li>
-                ';
-              }
+                        
+            <?php 
+            if ($_SESSION['acceso']==1)
+            {
+              echo '<li id="mAcceso" class="treeview">
+              <a href="#">
+                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="lUsuarios"><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li id="lPermisos"><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                
+              </ul>
+            </li>';
+            }
             ?>
 
-            <?php
-              if ($_SESSION['consultav'] == 1) {
-                echo '
-                <li class="treeview">
+            <?php 
+            if ($_SESSION['consultac']==1)
+            {
+              echo '<li id="mConsultaC" class="treeview">
+              <a href="#">
+                <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="lConsulasC"><a href="comprasfecha.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>                
+              </ul>
+            </li>';
+            }
+            ?>
+
+             <?php 
+            if ($_SESSION['consultav']==1)
+            {
+              echo '<li id="mConsultaV" class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="consultaventas.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>                
+                <li id="lConsulasV"><a href="ventasfechacliente.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>                
               </ul>
-            </li>
-                ';
-              }
+            </li>';
+            }
             ?>
 
             <li>

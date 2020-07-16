@@ -19,6 +19,7 @@
           <div class="box-header with-border">
             <h1 class="box-title">Articulos</h1>
             <button class="btn btn-success" onclick="mostrarFormulario(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Agregar</button>
+            <a href="../reportes/rptarticulos.php" target="_blank"><button class="btn btn-info">Reporte</button></a>
             <div class="box-tools pull-right">
             </div>
           </div>
